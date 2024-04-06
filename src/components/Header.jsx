@@ -4,9 +4,10 @@ import AddUser from "./AddUser";
 
 function Header() {
   const [personData, setPersonData] = useState({});
-  const [selectedPerson, setselectedPerson] = useState({});
+  const [selectedPerson, setSelectedPerson] = useState({});
   const [loading, setLoading] = useState(true);
-  console.log(selectedPerson);
+  const [show, setShowData] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,27 +15,26 @@ function Header() {
         const responseData = await response.json();
         const {
           picture: { large },
-          name: { first, last },
+          name: { first },
           email,
           dob: { age },
-          location: { city, country, postcode },
+          location: { city },
           phone,
           login: { password },
         } = responseData.results[0];
         setPersonData({
-          large: large,
+          large,
           name: first,
-          last: last,
-          email: email,
-          age: age,
-          location: [city, country, postcode],
-          phone: phone,
-          password,
+          email,
+          age,
+          location: city,
+          phone,
           password,
         });
+        setShowData(`My Name is ${first}`);
         setLoading(false);
       } catch (error) {
-        console.error("An Error occured:", error);
+        console.error("An Error occurred:", error);
         setLoading(false);
       }
     };
@@ -59,20 +59,20 @@ function Header() {
           <div className="block">
             <div className="container">
               <img
-                src={personData?.large}
+                src={personData.large}
                 alt="random user"
                 className="user-img"
               />
               <p className="user-title">
-                {`${personData.name} ${personData.last}`} <br />
+                {show}
+                <br />
               </p>
               <p className="user-value"></p>
-
               <AddUser
                 personData={personData}
-                setselectedPerson={setselectedPerson}
+                setselectedPerson={setSelectedPerson}
+                setShowData={setShowData}
               />
-
               <table className="table">
                 <thead>
                   <tr className="head-tr">

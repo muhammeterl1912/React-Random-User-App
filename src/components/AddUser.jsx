@@ -7,16 +7,16 @@ import phoneSvg from "../assets/phone.svg";
 import padlockSvg from "../assets/padlock.svg";
 import { useState } from "react";
 
-const AddUser = ({ personData,setselectedPerson}) => {
+const AddUser = ({ personData, setselectedPerson, setShowData }) => {
   // const [update, setUpdate] = useState(setPersonData);
 
   const handleButton = (e) => {
     const altValue = e.target.alt;
-    console.log(altValue);
-    setselectedPerson(
-      personData[altValue]
-    );
+    setselectedPerson(personData[altValue]);
+    setShowData(`${altValue.charAt(0).toUpperCase()}${altValue.slice(1)} : ${personData[altValue]}`);
+
   };
+  
 
   return (
     <div>
