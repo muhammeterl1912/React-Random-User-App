@@ -7,7 +7,8 @@ function Header() {
   const [selectedPerson, setSelectedPerson] = useState({});
   const [loading, setLoading] = useState(true);
   const [show, setShowData] = useState("");
-
+  const [table, setTable] = useState([]);
+  console.log(table);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,7 +41,7 @@ function Header() {
     };
 
     fetchData();
-  }, []);
+  }, [table]);
 
   const styleLoading = {
     position: "fixed",
@@ -72,6 +73,7 @@ function Header() {
                 personData={personData}
                 setselectedPerson={setSelectedPerson}
                 setShowData={setShowData}
+                setTable={setTable}
               />
               <table className="table">
                 <thead>
@@ -83,12 +85,16 @@ function Header() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="body-tr">
-                    <td>{personData.name}</td>
-                    <td>{personData.email}</td>
-                    <td>{personData.phone}</td>
-                    <td>{personData.age}</td>
-                  </tr>
+                  {table.map((item, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{item.name}</td>
+                        <td>{item.email}</td>
+                        <td>{item.phone}</td>
+                        <td>{item.age}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

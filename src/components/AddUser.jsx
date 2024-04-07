@@ -5,18 +5,18 @@ import womanAgeSvg from "../assets/growing-up-woman.svg";
 import mapSvg from "../assets/map.svg";
 import phoneSvg from "../assets/phone.svg";
 import padlockSvg from "../assets/padlock.svg";
-import { useState } from "react";
 
-const AddUser = ({ personData, setselectedPerson, setShowData }) => {
-  // const [update, setUpdate] = useState(setPersonData);
-
+const AddUser = ({ personData, setselectedPerson, setShowData,setTable }) => {
+ 
   const handleButton = (e) => {
     const altValue = e.target.alt;
     setselectedPerson(personData[altValue]);
-    setShowData(`${altValue.charAt(0).toUpperCase()}${altValue.slice(1)} : ${personData[altValue]}`);
-
+    setShowData(
+      `${altValue.charAt(0).toUpperCase()}${altValue.slice(1)} : ${
+        personData[altValue]
+      }`
+    );
   };
-  
 
   return (
     <div>
@@ -44,7 +44,7 @@ const AddUser = ({ personData, setselectedPerson, setShowData }) => {
         <button className="btn" type="button">
           new user
         </button>
-        <button className="btn" type="button">
+        <button className="btn" type="button" onClick={()=>setTable((item)=> [...item,personData])} >
           add user
         </button>
       </div>
