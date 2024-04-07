@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import loadingGif from "../assets/200w.gif";
 import AddUser from "./AddUser";
-
 function Header() {
   const [personData, setPersonData] = useState({});
-  const [selectedPerson, setSelectedPerson] = useState({});
   const [loading, setLoading] = useState(true);
   const [show, setShowData] = useState("");
   const [table, setTable] = useState([]);
   const [renew, setRenew] = useState(null);
-  const uniqueArr = [...new Set(table)];
+  const uniqueTableRow = [...new Set(table)];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -72,7 +70,6 @@ function Header() {
               <p className="user-value"></p>
               <AddUser
                 personData={personData}
-                setselectedPerson={setSelectedPerson}
                 setShowData={setShowData}
                 setTable={setTable}
                 setRenew={setRenew}
@@ -87,7 +84,7 @@ function Header() {
                   </tr>
                 </thead>
                 <tbody>
-                  {uniqueArr.map((row, i) => {
+                  {uniqueTableRow.map((row, i) => {
                     return (
                       <tr key={i}>
                         <td>{row.name}</td>
