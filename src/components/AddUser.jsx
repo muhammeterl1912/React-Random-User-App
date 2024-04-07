@@ -6,7 +6,7 @@ import mapSvg from "../assets/map.svg";
 import phoneSvg from "../assets/phone.svg";
 import padlockSvg from "../assets/padlock.svg";
 
-const AddUser = ({ personData, setselectedPerson, setShowData,setTable }) => {
+const AddUser = ({ personData, setselectedPerson, setShowData,setTable,setRenew }) => {
  
   const handleButton = (e) => {
     const altValue = e.target.alt;
@@ -41,7 +41,7 @@ const AddUser = ({ personData, setselectedPerson, setShowData,setTable }) => {
         </button>
       </div>
       <div className="btn-group">
-        <button className="btn" type="button">
+        <button className="btn" type="button" onClick={()=>setRenew(personData)}>
           new user
         </button>
         <button className="btn" type="button" onClick={()=>setTable((item)=> [...item,personData])} >

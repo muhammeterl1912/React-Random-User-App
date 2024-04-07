@@ -8,7 +8,8 @@ function Header() {
   const [loading, setLoading] = useState(true);
   const [show, setShowData] = useState("");
   const [table, setTable] = useState([]);
-  console.log(table);
+  const [renew, setRenew] = useState(null);
+  const uniqueArr = [...new Set(table)];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +42,7 @@ function Header() {
     };
 
     fetchData();
-  }, [table]);
+  }, [renew]);
 
   const styleLoading = {
     position: "fixed",
@@ -74,6 +75,7 @@ function Header() {
                 setselectedPerson={setSelectedPerson}
                 setShowData={setShowData}
                 setTable={setTable}
+                setRenew={setRenew}
               />
               <table className="table">
                 <thead>
@@ -85,13 +87,13 @@ function Header() {
                   </tr>
                 </thead>
                 <tbody>
-                  {table.map((item, i) => {
+                  {uniqueArr.map((row, i) => {
                     return (
                       <tr key={i}>
-                        <td>{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.age}</td>
+                        <td>{row.name}</td>
+                        <td>{row.email}</td>
+                        <td>{row.phone}</td>
+                        <td>{row.age}</td>
                       </tr>
                     );
                   })}
