@@ -2,7 +2,7 @@
 
 This React project, named "Random User", requests data from an API and populates it into the UI and a table. It utilizes props, fetch requests, useEffect, state, and props for efficient data management and rendering.
 
-You can view the live demo of this project [here](https://jocular-caramel-2bef5a.netlify.app/).
+👉 You can view the live demo of this project [here](https://jocular-caramel-2bef5a.netlify.app/).
 
 ## Table of Contents
 
