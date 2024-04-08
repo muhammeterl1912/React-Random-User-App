@@ -9,11 +9,7 @@ You can view the live demo of this project [here](https://jocular-caramel-2bef5a
 - [Introduction](#introduction)
 - [Features](#features)
 - [Demo](#demo)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
